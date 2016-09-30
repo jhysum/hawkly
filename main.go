@@ -1,11 +1,16 @@
 package main
 
 import (
-	_ "hawkly/routers"
 	"github.com/astaxie/beego"
+	_ "hawkly/routers"
+	"os"
 )
 
 func main() {
-	beego.Run()
+	port := os.Getenv("PORT")
+	if port != "" {
+		beego.Run(port)
+	} else {
+		beego.Run()
+	}
 }
-
